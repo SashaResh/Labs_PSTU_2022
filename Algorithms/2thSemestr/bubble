@@ -1,0 +1,37 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() 
+{
+	//const int n = 11;
+	//int arr[n] = { 41, 42, 66, 87, 86, 38, 77, 84, 45, 35, 22 };
+
+	vector <int> arr;
+	int u;
+	cin >> u;
+	do {
+		arr.push_back(u);
+		cin >> u;
+	} while (u != 0); //можно через другое ограничение,
+	// либо через динамический массив с изначальной просьбой пользователя ввести колличество элементов
+	int n = arr.size();
+
+	for (int i = 0; i < n; i++) {
+		cout << arr[i] << " ";
+	}
+	cout << endl;
+	for (int i = n; i > 0; i--)
+	{
+		for (int j = 1; j < i; j++)
+		{
+			if (arr[j] < arr[j - 1])
+			{
+				swap(arr[j], arr[j - 1]);
+			}
+		}
+	}
+	for (int i = 0; i < n; i++) {
+		cout << arr[i] << " ";
+	}
+}
