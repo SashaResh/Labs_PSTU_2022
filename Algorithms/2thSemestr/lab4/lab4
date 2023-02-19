@@ -1,0 +1,62 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int size;
+    cout << "elementov v massive: ";
+    cin >> size;
+    //sozdainie i vivod massiva
+    int* arr = new int[size];
+    for (int i = 0; i < size; i++)
+    {
+        arr[i] = rand() % 25;
+    }
+    for (int i = 0; i < size; i++)
+    {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+    //vivod ot K do K-1 vlevo
+    int k;
+    cout << "vvedite K: " << endl;
+    cin >> k;
+    for (int i = (k % size) - 1; i >= 0; i--)
+    {
+        cout << arr[i] << " ";
+    }
+    for (int i = size - 1; i >= k; i--)
+    {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+
+
+    //ydalenie max elementov
+    int newSize = 0;
+    int max = 0;
+    for (int i = 0; i < size; i++) {
+        if (arr[i] > max) {
+            max = arr[i];
+        }
+    }
+    for (int i = 0; i < size; i++)
+    {
+        if (arr[i] != max)
+        {
+            arr[newSize++] = arr[i];
+        }
+    }
+    size = newSize;
+    //vivod ot K do K-1 vpravo
+    for (int i = (k % size) - 1; i < size; i++)
+    {
+        cout << arr[i] << " ";
+    }
+    for (int i = 0; i < k - 1; i++)
+    {
+        cout << arr[i] << " ";
+    }
+    
+    delete[] arr;
+}
