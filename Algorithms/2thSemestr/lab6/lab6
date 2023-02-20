@@ -1,0 +1,50 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main()
+{
+
+	setlocale(LC_ALL, "Russian");
+	int n;
+	string buff;
+	int buff1, buff2;
+	bool ostanovka = false;
+	string a = "Отец мой Андрей Петрович Гринев в молодости своей служил при графе Минихе и вышел в отставку премьер-майором в 17 году С тех пор жил он в своей Симбирской деревне где и женился на девице Авдотье Васильевне Ю дочери бедного тамошнего дворянина Нас было девять человек детей Все мои братья и сестры умерли во младенчестве.";
+	string b = "АОУЫЭЕЁИЮЯаоуыэеёиюя";
+	cout << a << endl;
+	a = a + ' ';
+	int sizeA = a.size();
+	int i = 0;
+	int count = 0;
+	for (i; i < sizeA; i++) {
+		if (a[i] != ' ') {
+			buff += a[i];
+			
+		}
+		else {
+			buff2 = i + 1;
+			buff1 = buff2 - buff.size() - 1;
+			for (int j = 0; j < buff.size(); j++) {
+				for (int k = 0; k < b.size(); k++) {
+					if (buff[j] == b[k]) {
+						for (int ll = buff1; ll < buff2; ll++) {
+							a[ll] = '@';
+						}
+					}
+				}
+			}
+			buff = "";
+		}
+	}
+	cout << a << endl;
+	while(true) {
+		n = a.find('@');
+		if (n == -1) {
+			break;
+		}
+		a.erase(n, 1);
+	}
+	a.erase(a.size() - 1, 1);
+	cout << a << endl;
+}
